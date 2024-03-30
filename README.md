@@ -8,6 +8,8 @@ This package implements a decoder, encoder and a helper streamer for dca v0 and 
 
 There's also a standalone command you can use [here](https://github.com/jonas747/dca/tree/master/cmd/dca)
 
+
+
 Usage
 ===
 Encoding
@@ -37,10 +39,10 @@ for {
         if err != io.EOF {
             // Handle the error
         }
-        
+
         break
     }
-    
+
     // Do something with the frame, in this example were sending it to discord
     select{
         case voiceConnection.OpusSend <- frame:
@@ -89,8 +91,8 @@ if err != nil {
     // Handle the error
 }
 defer encodingSession.Cleanup()
-    
-done := make(chan error)    
+
+done := make(chan error)
 dca.NewStream(encodingSession, voiceConnection, done)
 err := <- done
 if err != nil && err != io.EOF {
